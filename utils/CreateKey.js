@@ -3,3 +3,4 @@ const CreateKeyRedis = (...args) => {
 };
 
 export const Days_Key = (id) => CreateKeyRedis("days", id);
+export const User_Key = (id) => CreateKeyRedis("user", id);
