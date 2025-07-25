@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routes
 app.use("/create-days", daysRouter);
+app.use("/signup", authRouter);
 
 //listening
 app
