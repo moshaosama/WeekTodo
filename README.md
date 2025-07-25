@@ -1,48 +1,52 @@
 # 🚀 Week_Todo Server
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Node.js-Express-blue?style=for-the-badge&logo=node.js" />
-  <img src="https://img.shields.io/badge/Database-SQL-green?style=for-the-badge&logo=postgresql" />
-  <img src="https://img.shields.io/badge/Cache-Redis-red?style=for-the-badge&logo=redis" />
+  <img src="https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/DB-SQL-blue?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cache-Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
+  <img src="https://img.shields.io/badge/Auth-JWT-black?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
 </p>
 
 <p align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTg0cWZrZHZscmthdXhvM3pqbHh5dmpqMDA2cWlxdzR1YmFpbHJ4eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d9I1A4p85y3Wc/giphy.gif" width="300" />
+  <img src="https://media.giphy.com/media/d9I1A4p85y3Wc/giphy.gif" width="280" alt="task-manager-gif" />
 </p>
+
+> **Week_Todo Server** is a fast, typed (optionally), production-ready **Task Management** backend built with **Node.js + Express**, **SQL database**, **Redis** for caching, and **JWT** authentication.  
+> Focused on performance ⚡, clean architecture 🧱, and developer happiness 😎.
 
 ---
 
-## 📌 About The Project
+## 📚 Table of Contents
 
-**Week_Todo Server** هو مشروع **Task Management** مبني باستخدام:
-- **Node.js** + **Express** لكتابة RESTful API
-- **SQL Database** لتخزين المهام
-- **Redis** كـ Caching Layer لتحسين الأداء
-- **JWT Authentication** لإدارة تسجيل الدخول
+- [✨ Features](#-features)
+- [🧱 Architecture](#-architecture)
+- [🛠 Tech Stack](#-tech-stack)
+- [📂 Project Structure](#-project-structure)
+- [⚙️ Getting Started](#️-getting-started)
+- [🧪 Available Scripts](#-available-scripts)
+- [🔐 Environment Variables](#-environment-variables)
+- [📡 API Reference](#-api-reference)
+- [🚀 Caching Strategy](#-caching-strategy)
+- [🧰 Error Format](#-error-format)
+- [🗄️ Database Schema (Example)](#️-database-schema-example)
+- [🗺 Roadmap](#-roadmap)
+- [🤝 Contributing](#-contributing)
+- [📜 License](#-license)
 
 ---
 
 ## ✨ Features
 
-- 📝 **إدارة المهام** (إضافة، تعديل، حذف، عرض)
-- 📆 **تصنيف المهام حسب الأيام**
-- ⚡ **Redis Cache** لتحميل سريع للبيانات
-- 🔒 **Authentication & Authorization** باستخدام JWT
-- 🔄 **API Endpoints** منظمة وقابلة للتوسع
+- 📝 **CRUD Tasks** (Create, Read, Update, Delete)
+- 📆 **Group tasks by week/day**
+- 🔒 **JWT Authentication & Authorization**
+- ⚡ **Redis cache** for blazing-fast reads
+- 🧭 **RESTful API**, clean & well-structured
+- 📊 **Status & Healthcheck endpoints**
+- 🧹 Optional ESLint + Prettier config
 
 ---
 
-## 🛠️ Tech Stack
-
-| **Category**    | **Technology**                     |
-|-----------------|------------------------------------|
-| **Backend**     | Node.js, Express                   |
-| **Database**    | SQL (PostgreSQL/MySQL)             |
-| **Caching**     | Redis                              |
-| **Authentication** | JWT                            |
-| **Other**       | dotenv, nodemon, body-parser       |
-
----
-
-## 📂 Project Structure
+## 🧱 Architecture
 
