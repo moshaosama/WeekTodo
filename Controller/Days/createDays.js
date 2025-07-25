@@ -8,19 +8,19 @@ export const createDays = async (req, res) => {
   try {
     const client = await initialConnectionRedis();
     const id = 93; // userId
-    // const DaysKey = Days_Key(id);
+    const DaysKey = Days_Key(93);
 
-    const isExist = await client.exists("bits:days:93");
+    const isExist = await client.exists(DaysKey);
 
     if (isExist) {
-      const rows = await client.lRange("bits:days:93", 0, -1);
+      const rows = await client.lRange(DaysKey, 0, -1);
       successResponse(res, "added successfully", rows);
     } else {
       const Value = Days.map((d) => d.day);
       const Query = "INSERT INTO days (dayName, user_id) VALUES (?,?)";
       const Value_1 = [Days.map((d) => d.day)[0], id];
       await DB.promise().query(Query, Value_1);
-      await client.rPush("bits:days:93", Value);
+      await client.rPush(DaysKey, Value);
       successResponse(res, "added successfullyasdasds", Value);
     }
   } catch (err) {
