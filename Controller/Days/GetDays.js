@@ -11,8 +11,6 @@ export const GetDays = async (req, res) => {
       errorResponse(res, 404, error);
     }
 
-    // console.log(value.user_id); 5
-
     const QueryGetDays = "SELECT * FROM days WHERE user_id = ?";
     const ValueGetDays = [value.user_id];
 
@@ -20,8 +18,11 @@ export const GetDays = async (req, res) => {
     const isExist = await client.exists(`bits:days:${value.user_id}`);
 
     if (isExist) {
-      const data = await client.lRange(`bits:days:${value.user_id}`, 0, -1);
-      successResponse(res, "get data successfully", data);
+      const Value = {
+        data: await client.lRange(`bits:days:${value.user_id}`, 0, -1),
+        ids: await client.lRange(`bits:days-details`, 0, -1),
+      };
+      successResponse(res, "get data successfully", Value);
     } else {
       const [result] = await DB.promise().query(QueryGetDays, ValueGetDays);
       successResponse(res, "get data successfully", result);
