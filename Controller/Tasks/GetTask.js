@@ -5,13 +5,12 @@ import { DB } from "../../utils/connectdataBase.js";
 
 export const GetTask = async (req, res) => {
   try {
-    const data = req.body;
-    const { user_id } = req.params;
+    const { user_id, day_id } = req.params;
     if (!user_id) {
       errorResponse(res, 404, "user_id is required");
     }
     const client = await initialConnectionRedis();
-    const Task_Keys = await Task_key(data.day_id);
+    const Task_Keys = Task_key(day_id);
     const isExist = await client.exists(Task_Keys);
     if (isExist) {
       const data = await client.lRange(Task_Keys, 0, -1);
@@ -19,7 +18,7 @@ export const GetTask = async (req, res) => {
     } else {
       const QueryGetTask =
         "SELECT * FROM tasks WHERE user_id = ? AND day_id = ?";
-      const ValueGetTask = [user_id, data.day_id];
+      const ValueGetTask = [user_id, day_id];
 
       const [result] = await DB.promise().query(QueryGetTask, ValueGetTask);
 
