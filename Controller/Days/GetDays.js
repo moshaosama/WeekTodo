@@ -23,7 +23,7 @@ export const GetDays = async (req, res) => {
       const data = await client.lRange(`bits:days:${value.user_id}`, 0, -1);
       successResponse(res, "get data successfully", data);
     } else {
-      const [result] = await DB.query(QueryGetDays, ValueGetDays);
+      const [result] = await DB.promise().query(QueryGetDays, ValueGetDays);
       successResponse(res, "get data successfully", result);
     }
   } catch (err) {
