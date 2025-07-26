@@ -3,9 +3,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { errorResponse, successResponse } from "../../utils/responses.js";
 import dotenv from "dotenv";
-import { Days } from "../../Constants/Days.js";
-import { Days_Key } from "../../utils/CreateKey.js";
-import { initialConnectionRedis } from "../../utils/rediusConnection.js";
 dotenv.config({ path: ".env" });
 
 export const Login = async (req, res) => {
@@ -26,18 +23,6 @@ export const Login = async (req, res) => {
     if (!isPasswordValid) {
       return errorResponse(res, 401, "Password is not correct");
     }
-
-    const DaysKey = Days_Key(user?.id);
-    const client = await initialConnectionRedis();
-    const Value = Days.map((d) => d.day);
-    const Query = "INSERT INTO days (dayName, user_id) VALUES (?,?)";
-    await Promise.all(
-      Days?.map(({ day }) => {
-        DB.query(Query, [day, user.id]);
-      })
-    );
-    await client.rPush(DaysKey, Value);
-    successResponse(res, "added successfullyasdasds", Value);
 
     const Data = {
       ...data,
