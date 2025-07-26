@@ -7,6 +7,6 @@ import { GetTask } from "../../Controller/Tasks/GetTask.js";
 const router = express.Router();
 
 router.route("/create-task").post(Validate(createTaskSchema), CreateTask);
-router.route("/get-task/:user_id").get(Validate(GetTaskSchema), GetTask);
+router.route("/get-task/:user_idgit ").get(Validate(GetTaskSchema), GetTask);
 
 export default router;
