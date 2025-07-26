@@ -25,7 +25,7 @@ export const Login = async (req, res) => {
     }
 
     const Data = {
-      ...data,
+      ...rows,
       Token,
     };
 
