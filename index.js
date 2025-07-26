@@ -18,6 +18,7 @@ app.use(cors());
 //Routes
 app.use("/days", daysRouter);
 app.use("/auth", authRouter);
+app.use("/task", taskRouter);
 
 //listening
 app
