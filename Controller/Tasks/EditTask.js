@@ -5,7 +5,7 @@ import { errorResponse, successResponse } from "../../utils/responses.js";
 
 export const EditTask = async (req, res) => {
   try {
-    const { task, index_db } = req.body;
+    const { task, index_db, Notes, subTask } = req.body;
     const { task_id, day_id } = req.params;
 
     if (!task || index_db === undefined) {
@@ -20,6 +20,12 @@ export const EditTask = async (req, res) => {
     if (result.affectedRows === 0) {
       return errorResponse(res, 404, "Task not found in database");
     }
+
+    const QueryCreateDetailsTask =
+      "INSERT INTO details_task (Notes, subTask, task_id) VALUES (?, ?,?)";
+    const ValueCreateDetailsTask = [Notes, subTask, task_id];
+
+    await DB.promise().query(QueryCreateDetailsTask, ValueCreateDetailsTask);
 
     const client = await initialConnectionRedis();
     const Task_keys = Task_key(day_id);
