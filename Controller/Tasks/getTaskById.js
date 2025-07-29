@@ -15,6 +15,8 @@ export const getTaskByid = async (req, res) => {
     const Tasks_Key = await Task_key(day_id);
 
     const isExist = await client.exists(Tasks_Key);
+    const QueryGetTaskDetails = "SELECT *  FROM details_task WHERE task_id = ?";
+    const ValueGetTaskDetails = [task_id];
 
     if (isExist === 1) {
       const data = await client.lRange(Tasks_Key, 0, -1);
