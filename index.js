@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import daysRouter from "./Routers/Days/dayRouter.js";
 import authRouter from "./Routers/Auth/authRouter.js";
 import taskRouter from "./Routers/Tasks/tasksRouter.js";
+import customTaskRouter from "./Routers/customTask/customRouter.js";
 import { connectDB } from "./utils/connectdataBase.js";
 import cors from "cors";
 
@@ -19,6 +20,7 @@ app.use(cors());
 app.use("/days", daysRouter);
 app.use("/auth", authRouter);
 app.use("/task", taskRouter);
+app.use("/custom-task", customTaskRouter);
 
 //listening
 app
