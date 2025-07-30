@@ -6,6 +6,7 @@ import { GetTask } from "../../Controller/Tasks/GetTask.js";
 import { getTaskByid } from "../../Controller/Tasks/getTaskById.js";
 import { EditTask } from "../../Controller/Tasks/EditTask.js";
 import { GetTaskDetails } from "../../Controller/Tasks/getDetailsTask.js";
+import { ClearTask } from "../../Controller/Tasks/ClearTask.js";
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.route("/get-task/:user_id/:day_id").get(GetTask);
 router.route("/get-task-by-id/:day_id/:task_id").get(getTaskByid);
 router.route("/edit-task/:day_id/:task_id").put(EditTask);
 router.route("/get-details-task/:task_id").get(GetTaskDetails);
+router.route("/delete-all-tasks/:day_id").delete(ClearTask);
 
 export default router;
