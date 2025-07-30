@@ -12,10 +12,6 @@ export const initialConnectionRedis = async () => {
       console.log(err);
     });
 
-    Client.on("ready", () => {
-      console.log("Redis is ready ✅");
-    });
-
     await Client.connect().then(() => {
       console.log("Redis connected");
       return Client;
